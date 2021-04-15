@@ -13,7 +13,8 @@
 //init function
 
 function buildMetaData(sampleNumber) {
-    d3.json("../../samples.json").then((data) => {
-        var metadata = data.metadata
+    d3.json("samples.json").then((data) => {
+        var metadata = data.metadata;
+        console.log(metadata);
     })
 }
