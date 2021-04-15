@@ -16,7 +16,10 @@ function buildMetaData(sampleNumber) {
     d3.json("samples.json").then((data) => {
         var metadata = data.metadata;
         console.log(metadata);
-        
-        metadata.filter(metadata => metadata.id == sampleNumber)
+        //Filtering metadata
+        var sample =metadata.filter(metadata => metadata.id == sampleNumber)
+        //Getting rid of the array so it only displays dictionary
+        sample = sample[0]
+
     })
 }
