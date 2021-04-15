@@ -56,20 +56,21 @@ function buildCharts(sampleNumber) {
     Plotly.newPlot("bar", [barTrace, layout]);
     //Creating Bubble Chart
         bubbleTrace = {
-            x: otu_ids.slice(0,10),
-            y: sample_values.slice(0,10).map(otu => `OTU ${otu}`).reverse(),
+            x: otu_ids,
+            y: sample_values,
             mode: 'markers',
         marker: {
-            size: otu_ids},
-            text: otu_labels.slice(0,10)
+            size: sample_values,
+            color: otu_ids},
+            text: otu_labels
         };
 
         //Creating Layout
         var bubbleLayout = {title: "Bubble Chart Bacteria Data",
-                    xaxis: "OTU IDs",
-                    yaxis: "Sample Values"};
+                            showlegend: false,
+    };
 
-    Plotly.newPlot("marker", [bubbleTrace, layout]);
+    Plotly.newPlot("bubble", [bubbleTrace, layout]);
     });
 };
 buildCharts(940);
