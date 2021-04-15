@@ -16,5 +16,7 @@ function buildMetaData(sampleNumber) {
     d3.json("samples.json").then((data) => {
         var metadata = data.metadata;
         console.log(metadata);
+        
+        metadata.filter(metadata => metadata.id == sampleNumber)
     })
 }
