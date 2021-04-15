@@ -1,4 +1,4 @@
-//Bar Chart
+
 
 //Bubble Chart
 
@@ -30,3 +30,20 @@ function buildMetaData(sampleNumber) {
 
     })
 }
+//Bar Chart
+function buildCharts(sampleNumber) {
+    d3.json("samples.json").then((data) => {
+        samaple = data.samples;
+        var sample = sample.filter(d => d.id == sampleNumber);
+        sample = sample[0];
+        var otu_ids = sample.otu_ids;
+        var otu_labels = sample.otu_labels;
+        var sample_values = sample.sample_values;
+    })
+}
+
+// * Use `sample_values` as the values for the bar chart.
+
+// * Use `otu_ids` as the labels for the bar chart.
+
+// * Use `otu_labels` as the hovertext for the chart.
