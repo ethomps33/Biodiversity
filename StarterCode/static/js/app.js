@@ -20,8 +20,9 @@ function buildMetaData(sampleNumber) {
         var sample =metadata.filter(metadata => metadata.id == sampleNumber);
         //Getting rid of the array so it only displays dictionary
         sample = sample[0];
-
+        //Selecting part of html where the data will display
         var metadata_object = d3.select("#sample-metadata");
+        metadata_object.html("")
         //Create a loop to append data
         Object.entries(sample).forEach(([key, value]) => {
             metadata_object.append("h6").text(`${key.toUpperCase}: ${value}`);
@@ -29,4 +30,3 @@ function buildMetaData(sampleNumber) {
 
     })
 }
-buildMetaData()
