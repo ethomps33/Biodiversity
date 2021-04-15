@@ -25,31 +25,55 @@ function buildMetaData(sampleNumber) {
         metadata_object.html("")
         //Create a loop to append data
         Object.entries(sample).forEach(([key, value]) => {
-            metadata_object.append("h6").text(`${key.toUpperCase}: ${value}`);
+            metadata_object.append("h6").text(`${key}: ${value}`);
         })
 
     })
 }
-//Bar Chart
+//Charts
 function buildCharts(sampleNumber) {
     d3.json("samples.json").then((data) => {
-        samaple = data.samples;
+        sample = data.samples;
         var sample = sample.filter(d => d.id == sampleNumber);
         sample = sample[0];
         var otu_ids = sample.otu_ids;
         var otu_labels = sample.otu_labels;
         var sample_values = sample.sample_values;
-        //Creating Traces
+    //Creating Bar Chart
         barTrace = {
             x: sample_values.slice(0,10),
             y: otu_ids.slice(0,10).map(otu => `OTU ${otu}`).reverse(),
             type: "bar",
             text: otu_labels.slice(0,10),
             orientation: "h"
-        }
-    })
-}
+        };
+        
+        //Creating Layout
+        var layout = {title: "Data by ID",
+                    xaxis: "Sample Values",
+                    yaxis: "OTU ID"};
 
+    Plotly.newPlot("bar", [barTrace, layout]);
+    //Creating Bubble Chart
+        bubbleTrace = {
+            x: otu_ids.slice(0,10),
+            y: sample_values.slice(0,10).map(otu => `OTU ${otu}`).reverse(),
+            mode: 'markers',
+        marker: {
+            size: otu_ids},
+            text: otu_labels.slice(0,10)
+        };
+
+        //Creating Layout
+        var bubbleLayout = {title: "Bubble Chart Bacteria Data",
+                    xaxis: "OTU IDs",
+                    yaxis: "Sample Values"};
+
+    Plotly.newPlot("marker", [bubbleTrace, layout]);
+    });
+};
+buildCharts(940);
+buildMetaData(940);
 // * Use `sample_values` as the values for the bar chart.
 
 // * Use `otu_ids` as the labels for the bar chart.
