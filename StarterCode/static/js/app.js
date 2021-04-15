@@ -11,3 +11,9 @@
 //Add options for drowpdown id = selDataset
 
 //init function
+
+function buildMetaData(sampleNumber) {
+    d3.json("../../samples.json").then((data) => {
+        var metadata = data.metadata
+    })
+}
