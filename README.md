@@ -1,17 +1,33 @@
-# UFO_Sightings
+# Biodiversity
+The dataset reveals that a small handful of microbial species (also called operational taxonomic units, or OTUs, in the study) were present in more than 70% of people, while the rest were relatively rare.
 
-WAKE UP SHEEPLE! The extra-terrestrial menace has come to Earth and we here at ALIENS-R-REAL have collected all of the eye-witness reports we could to prove it! All we need to do now is put this information online for the world to see and then the matter will finally be put to rest.
+# Step 1: Plotly
+* Use the D3 library to read in samples.json.
 
-There is just one tiny problem though... our collection is too large to search through manually. Even our most dedicated followers are complaining that they are having trouble locating specific reports in this mess.
+* Create a horizontal bar chart with a dropdown menu to display the top 10 OTUs found in that individual.
 
-That's why we are hiring you. We need you to write code that will create a table dynamically based upon a dataset we provide. We also need to allow our users to filter the table data for specific values. There's a catch though... we only use pure JavaScript, HTML, and CSS, and D3.js on our web pages. They are the only coding languages which can be trusted.
+* Use sample_values as the values for the bar chart.
 
-You can handle this... right? The planet Earth needs to know what we have found!
+* Use otu_ids as the labels for the bar chart.
 
-# Level 1: Automatic Table and Date Search (Required)
-* Create a basic HTML web page or use the index.html file provided (we recommend building your own custom page!).
+* Use otu_labels as the hovertext for the chart.
 
-* Using the UFO dataset provided in the form of an array of JavaScript objects, write code that appends a table to your web page and then adds new rows of data for each UFO sighting.
+* Create a bubble chart that displays each sample.
 
-    * Make sure you have a column for date/time, city, state, country, shape, and comment at the very least.
-* Use a date form in your HTML document and write JavaScript code that will listen for events and search through the date/time column to find rows that match user input.
+* Use otu_ids for the x values.
+
+* Use sample_values for the y values.
+
+* Use sample_values for the marker size.
+
+* Use otu_ids for the marker colors.
+
+* Use otu_labels for the text values.
+
+# Bubble Chart
+
+* Display the sample metadata, i.e., an individual's demographic information.
+
+* Display each key-value pair from the metadata JSON object somewhere on the page.
+
+* Update all of the plots any time that a new sample is selected.
